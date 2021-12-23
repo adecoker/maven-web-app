@@ -13,7 +13,7 @@ git credentialsId: 'GitHub-Credentials', url: 'https://github.com/adecoker/maven
      sh "${mavenHome}/bin/mvn deploy"
 }
   stage('5-Deploy-UAT') {
-     deploy adapters: [tomcat9(credentialsId: 'tomcat9-credentials', path: '', url: 'http://50.18.240.218:8080/')], contextPath: null, war: 'target/*war'
+     deploy adapters: [tomcat9(credentialsId: 'tomcat9-credentials', path: '', url: 'http://13.56.164.190:8880/')], contextPath: null, war: 'target/*war'
   }
   stage('6-EmailNotification') {
     emailext body: '''Hi Everyone , 
@@ -28,6 +28,6 @@ input message: 'Please verify and approve'
  }
 }
 stage('prod-Deploy'){
- deploy adapters: [tomcat9(credentialsId: 'tomcat9-credentials', path: '', url: 'http://50.18.240.218:8080/')], contextPath: null, war: 'target/*war'
+ deploy adapters: [tomcat9(credentialsId: 'tomcat9-credentials', path: '', url: 'http://13.56.164.190:8880/')], contextPath: null, war: 'target/*war'
 }
 }
